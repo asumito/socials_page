@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Social Handles</title>
+    <style>
+        /* Nord Color Palette */
+        :root {
+            --nord0: #2E3440; /* Polar Night - Deepest Dark */
+            --nord1: #3B4252; /* Polar Night - Darker */
+            --nord2: #434C5E; /* Polar Night - Dark */
+            --nord3: #4C566A; /* Polar Night - Light */
+            --nord4: #D8DEE9; /* Snow Storm - Snow */
+            --nord5: #E5E9F0; /* Snow Storm - Frost */
+            --nord6: #ECEFF4; /* Snow Storm - Aurora */
+            --nord7: #8FBCBB; /* Aurora - Cyan */
+            --nord8: #88C0D0; /* Aurora - Blue */
+            --nord9: #81A1C1; /* Aurora - Polar */
+            --nord10: #5E81AC; /* Aurora - Night */
+            --nord11: #BF616A; /* Aurora - Red */
+            --nord12: #D08770; /* Aurora - Orange */
+            --nord13: #EBCB8B; /* Aurora - Yellow */
+            --nord14: #A3BE8C; /* Aurora - Green */
+            --nord15: #B48EAD; /* Aurora - Purple */
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: var(--nord0);
+            color: var(--nord4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .social-container {
+            background-color: var(--nord1);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex; /* Make items horizontal */
+            gap: 20px; /* Space between items */
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            justify-content: center; /* Center items even with wrapping */
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column; /* Arrange image and text vertically within each link */
+            align-items: center; /* Center image and text horizontally */
+            text-decoration: none;
+            color: var(--nord4);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for box-shadow */
+            min-width: 150px; /* Minimum width for each section */
+            padding: 15px; /* Add some padding around each section */
+            border-radius: 8px; /* Optional: Rounded corners for each section */
+            position: relative; /* For the before pseudo-element */
+            overflow: hidden; /* Clip the gradient effect */
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px); /* Slight vertical lift on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Slightly more prominent shadow on hover */
+        }
+
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            background-color: var(--nord3); /* Placeholder background */
+            object-fit: cover; /* Ensure image covers the circle */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+            transition: transform 0.2s ease-in-out; /* Transition for the pop effect */
+        }
+
+        .social-link:hover .profile-picture {
+            transform: scale(1.1); /* Slight pop on hover */
+        }
+
+        .social-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .platform-name {
+            font-weight: bold;
+            color: var(--nord6);
+            margin-bottom: 5px;
+            position: relative; /* For absolute positioning of wavy spans */
+            overflow: hidden; /* Clip any overflow from the spans */
+            display: block; /* Ensure it takes full width for centering */
+        }
+
+        .platform-name span {
+            position: relative;
+            display: inline-block;
+            animation: wave 1s infinite alternate;
+        }
+
+        .platform-name span:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .platform-name span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .platform-name span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .platform-name span:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        .platform-name span:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+        .platform-name span:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+        .platform-name span:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+        .platform-name span:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+        .platform-name span:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+        .platform-name span:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+        /* Add more nth-child rules if you have longer platform names */
+
+        @keyframes wave {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .username {
+            color: var(--nord5);
+            font-size: 0.9em;
+        }
+
+        /* Cool Effects */
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--nord7), var(--nord8), var(--nord9), var(--nord10), var(--nord7)); /* Added one more color to the gradient */
+            background-size: 600% 600%; /* Increased background size for a slower animation */
+            z-index: -1;
+            border-radius: 8px; /* Match the link's border-radius */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            animation: none; /* Remove initial animation */
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+            animation: gradientAnimation 6s infinite alternate; /* Slower and smoother gradient */
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="social-container">
+        <a href="https://discord.com/users/772342354224873482" class="social-link" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1359914531731800376/1359914821495034068/image0.jpg?ex=67f936df&is=67f7e55f&hm=3b4a6fe6b113c7ec51d7d6683d50065698b50d38b3c99d76a502536615020c1f&" alt="Discord Server" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>D</span><span>i</span><span>s</span><span>c</span><span>o</span><span>r</span><span>d</span>
+                </span>
+                <span class="username">discord</span>
+            </div>
+        </a>
+
+        <a href="https://www.facebook.com/your_facebook_page" class="social-link" target="_blank">
+            <img src="placeholder-facebook.png" alt="Facebook Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>F</span><span>a</span><span>c</span><span>e</span><span>b</span><span>o</span><span>o</span><span>k</span>
+                </span>
+                <span class="username">your_facebook_page</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/your_github_handle" class="social-link" target="_blank">
+            <img src="placeholder-github.png" alt="GitHub Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>G</span><span>i</span><span>t</span><span>H</span><span>u</span><span>b</span>
+                </span>
+                <span class="username">your_github_handle</span>
+            </div>
+        </a>
+
+        <a href="https://www.instagram.com/your_instagram_handle" class="social-link" target="_blank">
+            <img src="placeholder-instagram.png" alt="Instagram Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>I</span><span>n</span><span>s</span><span>t</span><span>a</span><span>g</span><span>r</span><span>a</span><span>m</span>
+                </span>
+                <span class="username">@your_instagram_handle</span>
+            </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/your_linkedin_profile" class="social-link" target="_blank">
+            <img src="placeholder-linkedin.png" alt="LinkedIn Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>L</span><span>i</span><span>n</span><span>k</span><span>e</span><span>d</span><span>I</span><span>n</span>
+                </span>
+                <span class="username">your_linkedin_profile</span>
+            </div>
+        </a>
+
+        <a href="https://www.reddit.com/user/your_reddit_username" class="social-link" target="_blank">
+            <img src="placeholder-reddit.png" alt="Reddit Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>R</span><span>e</span><span>d</span><span>d</span><span>i</span><span>t</span>
+                </span>
+                <span class="username">u/your_reddit_username</span>
+            </div>
+        </a>
+
+        <a href="https://www.snapchat.com/add/your_snapchat_username" class="social-link" target="_blank">
+            <img src="placeholder-snapchat.png" alt="Snapchat Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>S</span><span>n</span><span>a</span><span>p</span><span>c</span><span>h</span><span>a</span><span>t</span>
+                </span>
+                <span class="username">your_snapchat_username</span>
+            </div>
+        </a>
+
+        <a href="https://www.twitch.tv/your_twitch_username" class="social-link" target="_blank">
+            <img src="placeholder-twitch.png" alt="Twitch Channel" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>T</span><span>w</span><span>i</span><span>t</span><span>c</span><span>h</span>
+                </span>
+                <span class="username">twitch.tv/your_twitch_username</span>
+            </div>
+        </a>
+
+        <a href="https://www.youtube.com/your_youtube_channel" class="social-link" target="_blank">
+            <img src="placeholder-youtube.png" alt="YouTube Profile" class="profile-picture">
+            <div class="social-info">
+                <span class="platform-name">
+                    <span>Y</span><span>o</span><span>u</span><span>T</span><span>u</span><span>b</span><span>e</span>
+                </span>
+                <span class="username">your_youtube_channel</span>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
